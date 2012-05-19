@@ -247,7 +247,7 @@ class Lbc_Ad
 
 class Lbc_Parser {
     static function process($content) {
-        $timeToday = strtotime(date("Y-m-d")." 00:00:00");
+        $timeToday = strtotime(date("Y-m-d")." 23:59:59");
         $dateYesterday = $timeToday - 24*3600;
 
         libxml_use_internal_errors(true);
@@ -287,9 +287,10 @@ class Lbc_Parser {
                         $dateStr = preg_replace("#\s+#", " ", trim($node->nodeValue));
                         $aDate = explode(' ', $dateStr);
                         if (false !== strpos($dateStr, 'Aujourd')) {
-                            $time = $timeToday;
+                            $time = strtotime(date("Y-m-d")." 00:00:00");
                         } elseif (false !== strpos($dateStr, 'Hier')) {
-                            $time = $dateYesterday;
+                            $time = strtotime(date("Y-m-d")." 00:00:00");
+                            $time = strtotime("-1 day", $time);
                         } else {
                             if (!isset($months[$aDate[1]])) {
                                 continue;
