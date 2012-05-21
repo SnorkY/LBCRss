@@ -9,6 +9,7 @@ if (!file_get_contents("http://www.leboncion.fr")) {
 <html>
     <head>
         <title>Flux RSS des annonces Leboncoin</title>
+        <meta charset="utf-8">
     </head>
     <body>
         <h1>Flux RSS des annonces Leboncoin</h1>

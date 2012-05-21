@@ -244,8 +244,26 @@ class Lbc_Ad
     }
 }
 
+class Lbc
+{
+    public static function formatUrl($url)
+    {
+        $aUrl = parse_url($url);
+        if (!isset($aUrl["host"]) || $aUrl["host"] != "www.leboncoin.fr") {
+            throw new Exception("Url invalide");
+        }
+        if (isset($aUrl["query"])) {
+            parse_str($aUrl["query"], $query);
+            unset($query["o"]);
+            $url = str_replace($aUrl["query"], http_build_query($query), $url);
+        }
+        return $url;
+    }
+}
 
-class Lbc_Parser {
+
+class Lbc_Parser
+{
     static function process($content) {
         $timeToday = strtotime(date("Y-m-d")." 23:59:59");
         $dateYesterday = $timeToday - 24*3600;

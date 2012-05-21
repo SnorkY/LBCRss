@@ -15,6 +15,14 @@ if (empty($_GET["url"])) {
     return;
 }
 
+try {
+    $_GET["url"] = Lbc::formatUrl($_GET["url"]);
+} catch (Exception $e) {
+    echo "Cette adresse ne semble pas valide.";
+    exit;
+}
+
+
 $content = file_get_contents($_GET["url"]);
 $ads = Lbc_Parser::process($content);
 
