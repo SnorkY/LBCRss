@@ -142,6 +142,11 @@ class Channel{
 		$webmaster, $lastBuildDate,  $generator, $pubDate, $channelLink;
 
 	private $_items;
+	
+	public function __construct()
+	{
+	    $this->_items = array();
+	}
 
 	/**
 	 * Returns feed items
