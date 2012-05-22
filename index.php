@@ -43,7 +43,7 @@ $feeds->setChannelLink(
     "://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]
 );
 $feeds->setLink("http://www.leboncoin.fr");
-$feeds->setDescription("Flux RSS de la recherche : ".$_GET["url"]);
+$feeds->setDescription("Flux RSS de la recherche : ".htmlspecialchars($_GET["url"]));
 
 if (count($ads)) {
     foreach ($ads AS $ad) {

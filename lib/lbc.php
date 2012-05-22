@@ -276,9 +276,9 @@ class Lbc_Parser
 
         // date mapping
         $months = array(
-            "jan" => 1, "fév" => 2, "mars" => 3, "avril" => 4,
+            "jan" => 1, "fév" => 2, "mars" => 3, "avr" => 4,
             "mai" => 5, "juin" => 3, "juillet" => 7, "août" => 8,
-            "septembre" => 9, "octobre" => 10, "novembre" => 11, // @todo mettre à jour les termes des mois utilisés sur Leboncoin
+            "sept" => 9, "oct" => 10, "nov" => 11,
             "dec" => 12
         );
 
