@@ -1,3 +1,3 @@
 <?php
 
-return "0.1";
+return "0.2beta1";
