@@ -48,7 +48,7 @@ $feeds->setDescription("Flux RSS de la recherche : ".htmlspecialchars($_GET["url
 if (count($ads)) {
     foreach ($ads AS $ad) {
         $item = new FeedItem(
-            md5($ad->getId()),
+            md5($ad->getId().$ad->getDate()),
             $ad->getTitle(),
             $ad->getLink(),
             require $dirname."/view.phtml"
