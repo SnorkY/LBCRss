@@ -83,7 +83,7 @@
  		$tmp->setAttribute('type', 'application/atom+xml');
 
  		if (empty ($this->_channel->lastBuildDate)) {
- 			$this->_atomNode->appendChild($this->_dom->createElement('updated', date3339(time())));
+ 			$this->_atomNode->appendChild($this->_dom->createElement('updated', date("D, d M Y H:i:s O", time())." GMT"));
  		}
 
  		foreach ($this->_channel->getItems() as $item) {
@@ -111,7 +111,7 @@
  			}
 
  			if (empty ($item->updated)) {
- 				$i->appendChild($this->_dom->createElement('updated', date3339(time())));
+ 				$i->appendChild($this->_dom->createElement('updated', date("D, d M Y H:i:s O", time())." GMT"));
  			}
  		}
 
