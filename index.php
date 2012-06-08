@@ -10,6 +10,8 @@ $dirname = dirname(__FILE__);
 require $dirname."/lib/feedgenerator/FeedGenerator.php";
 require $dirname."/lib/lbc.php";
 
+date_default_timezone_set("Europe/Paris");
+
 if (empty($_GET["url"])) {
     require $dirname."/form.php";
     return;
@@ -53,7 +55,7 @@ if (count($ads)) {
             $ad->getLink(),
             require $dirname."/view.phtml"
         );
-        $item->pubDate = date("D, d M Y H:i:s O", $ad->getDate())." GMT";
+        $item->pubDate = gmdate("D, d M Y H:i:s O", $ad->getDate())." GMT";
         $feeds->addItem($item);
     }
 }
