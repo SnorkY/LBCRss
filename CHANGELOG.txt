@@ -1,3 +1,10 @@
+## Version 1.2 - 16/06/2012
+
+ * ajout : système de filtre sur les prix et sur les villes.
+ * ajout : possibilité d'exclure les annonces sans prix d'indiqué.
+ * correction de problème avec les dates (fuseau horaire notemment).
+
+
 ## Version 1.1 - 31/05/2012
 
  * mise à jour du parser (changement sur Leboncoin).

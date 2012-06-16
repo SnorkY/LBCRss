@@ -264,7 +264,14 @@ class Lbc
 
 class Lbc_Parser
 {
-    static function process($content) {
+    static function process($content, array $filters = array()) {
+        $filters = array_merge(array(
+            "price_min" => -1, "price_max" => -1, "price_strict" => false,
+            "cities" => ""
+        ), $filters);
+        if (trim($filters["cities"])) {
+            $filters["cities"] = array_map("trim", explode("\n", $filters["cities"]));
+        }
         $timeToday = strtotime(date("Y-m-d")." 23:59:59");
         $dateYesterday = $timeToday - 24*3600;
 
@@ -357,6 +364,18 @@ class Lbc_Parser
                         $ad->setUrgent(true);
                     }
                 }
+            }
+            if (!$ad->getPrice() && $filters["price_strict"]) {
+                continue;
+            }
+            if ($ad->getPrice()) {
+                if ($filters["price_min"] != -1 && $ad->getPrice() < $filters["price_min"]
+                    || $filters["price_max"] != -1 && $ad->getPrice() > $filters["price_max"]) {
+                    continue;
+                }
+            }
+            if ($filters["cities"] && !in_array($ad->getCity(), $filters["cities"])) {
+                continue;
             }
             if ($ad->getDate()) {
                 $ads[$ad->getId()] = $ad;

@@ -26,7 +26,7 @@ try {
 
 
 $content = file_get_contents($_GET["url"]);
-$ads = Lbc_Parser::process($content);
+$ads = Lbc_Parser::process($content, $_GET);
 
 $title = "LeBonCoin";
 $urlParams = parse_url($_GET["url"]);
