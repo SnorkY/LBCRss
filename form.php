@@ -1,7 +1,7 @@
 <?php
 // vérifie la possibilité d'effectuer des requêtes distantes
 $error = false;
-if (!file_get_contents("http://www.leboncion.fr")) {
+if (!file_get_contents("http://www.leboncoin.fr")) {
     $error = true;
 }
 $values = array(
